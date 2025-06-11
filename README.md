@@ -28,6 +28,7 @@ aufbaut.
 Die zweite Seite beschäftigt sich mit V-USB und sehr faszinierend hier ist, dass dort auch
 ein Bootloader für eben V-USB zur Verfügung gestellt wird. Dieser Bootloader hat gegenüber
 diesem UART-Bootloader folgende Vorteile:
+<br>
 <ul>
   <li>deutlich schnellerer Upload</li>
   <li>weniger benötigte Bauteile (2 Zenerdioden und 3 Widerstände, ggf. 3.3V Spannungsregler)
@@ -47,9 +48,9 @@ Die Nachteile des V-USB Bootloaders sind dann auch die Vorteile des UART-Bootloa
   <li>nur eine USB-Buchse notwendig</li>
   <li>vor einem Upload bspw. mittels eines 'make flash' wird durch das Hostprogramm der Controller
       selbsttätig in den Bootmodus gesetzt</li>
-  <li>immer noch sehr deutlich schneller als 'ardulink'    
+  <li>immer noch sehr deutlich schneller als 'ArduLink'</li>    
 </ul>
-<br><br>
+<br>
 Der Bootloader kann entweder zur Not (weil kein Programmer verfügbar ist) mit einem Arduino 
 oder einem Programmer geflasht werden. Hierfür sind die Einstellungen im wohl selbsterklärenden 
 Makefile entsprechend zu setzen.
