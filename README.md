@@ -5,7 +5,7 @@
     <tr>
       <td bgcolor="#999999"><font color="#000000" face="Arial" style="font-size: 15px;">
 
-Auf dieser Eingangsseite jetzt nur in Kürze fürr was dieses Repository 'gut' ist:
+Auf dieser Eingangsseite jetzt nur in Kürze für was dieses Repository 'gut' ist:
 <br><br>
 Der im Auslieferungszustand enthaltene serielle Bootloader ist für den Bastler nicht so richtig
 Alltagstauglch. Auch wenn der Autor nicht wirklich ein Fan von dem Arduino-Framework ist, hat
