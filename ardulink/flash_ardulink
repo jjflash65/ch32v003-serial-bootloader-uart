@@ -1,0 +1,132 @@
+#!/bin/bash
+# -------------------------------------------
+#   Flashen der Firmware ardulink
+#   fuer Controller ATtiny2313, ATmega8, ATmega88 / 168 / 328
+#   Microcontroller
+#
+#   12.10.2015 R. Seelig
+# -------------------------------------------
+PS3=$'\nBitte waehlen (1..7): '
+echo -e "\nZu benutzender Programmer um Ardulink zu flashen\n"
+echo -e " Hinweis: ein originaler Arduino-Nano hat einen Bootloader mit 57600 Bd,"
+echo -e "          viele Nano-Clone haben jedoch einen 115200 Bootloader, entsprechend"
+echo -e "          die Auswahl hier waehlen\n"
+
+select wahl in "USBtinyISP" "USBasp" "STK500v2" "AVRISP" "Arduino_115200_Bd" "Arduino_57600_Bd" "Abbruch"
+do
+  case $wahl in
+    USBtinyISP) programmer="usbtiny"; break;;
+    USBasp) programmer="usbasp"; break;;
+    STK500v2) programmer="stk500v2"; 
+              baud="115200";
+              break;;
+    AVRISP) programmer="avrisp";
+              baud="115200";
+              break;;
+    Arduino_115200_Bd) programmer="arduino";
+              baud="115200";
+              break;;
+    Arduino_57600_Bd) programmer="arduino";
+              baud="57600";
+              break;;
+    Abbruch) programmer="ende"; break;;
+  esac
+done
+
+if [ "$programmer" == "ende" ]; then
+  exit
+fi
+
+if [ "$programmer" == "avrisp" ]; then
+  echo -e "\n\e[40;1;32mGewaehlter Programmer: AVRISP\n\n AVRISP ist hier das Beispielsprogramm aus Arduino!"
+  echo -e " Dieser Programmer arbeitet mit einer Baudrate von 19200 Bd \n\e[49;0;39m"
+fi
+
+if [ "$programmer" == "arduino" ] || [ "$programmer" == "stk500v2" ] || [ "$programmer" == "avrisp" ]; then
+
+  echo -e "\nAn welchen Port ist der serielle Programmer (Arduino / AVRISP oder STK500V2) angeschlossen ?\n"
+
+  PS3=$'\n\nBitte waehlen (1..5): '
+
+  select wahl in "ttyUSB0" "ttyUSB1" "ttyACM0" "ttyACM1" "Abbruch"
+  do
+    case $wahl in
+      ttyUSB0) comport="/dev/ttyUSB0"; break;;
+      ttyUSB1) comport="/dev/ttyUSB1"; break;;
+      ttyACM0) comport="/dev/ttyACM0"; break;;
+      ttyACM1) comport="/dev/ttyACM1"; break;;
+      Abbruch) comport="ende"; break;;
+    esac
+  done
+  if [ "$comport" == "ende" ]; then
+    exit
+  fi
+
+  echo -e "\n\e[40;1;32mGewaehlter serieller Port: $comport \e[49;0;39m"
+
+fi
+
+echo -e "\nZu flashenden Controller waehlen\n"
+
+PS3=$'\nBitte waehlen (1..6): '
+
+select wahl in "ATmega328" "ATmega168" "ATmega88"  "ATmega8" "ATtiny2313" "Abbruch"
+do
+  case $wahl in
+    "ATmega328")   hexfile="ardulink_m328.hex";
+                            fuses="-U lfuse:w:0xff:m -U hfuse:w:0xd8:m -U efuse:w:0x05:m";
+                            part="-p atmega328p";
+                            break;;
+
+    "ATmega168")   hexfile="ardulink_m168.hex";
+                            fuses="-U lfuse:w:0xff:m -U hfuse:w:0xdd:m -U efuse:w:0x00:m";
+                            part="-p atmega168";
+                            break;;
+
+    "ATmega88")    hexfile="ardulink_m88.hex";
+                            fuses="-U lfuse:w:0xff:m -U hfuse:w:0xdd:m -U efuse:w:0xfa:m";
+                            part="-p atmega88";
+                            break;;
+
+    "ATmega8")     hexfile="ardulink_m8.hex";
+                            fuses="-U lfuse:w:0xbf:m -U hfuse:w:0xcc:m";
+                            part="-p atmega8";
+                            break;;
+
+    "ATtiny2313")  hexfile="ardulink_t2313.hex"
+                            fuses="-U lfuse:w:0xce:m -U hfuse:w:0xdf:m";
+                            part="-p attiny2313";
+                            break;;
+
+    "Abbruch")              hexfile="ende";
+                            break;;
+  esac
+done
+if [ "$hexfile" == "ende" ]; then
+  exit
+fi
+
+
+echo -e "\n\e[40;1;32mGewaehlte Hex-Datei ist: $hexfile\n \e[49;0;39m"
+
+calldude="avrdude -c $programmer -V -B 3"
+
+if [ "$programmer" == "arduino" ] || [ "$programmer" == "stk500v2" ] || [ "$programmer" == "avrisp" ]; then
+  calldude="$calldude -P $comport -b $baud"
+fi
+
+calldude="$calldude $part -U flash:w:$hexfile $fuses"
+
+korrekt=1
+while [ $korrekt -eq 1 ]; do
+  echo -e "\nDer Aufruf von AVRDUDE geschieht folgenderweise:\n\n\e[40;1;33m$calldude\e[49;0;39m\n\nSoll dieser so ausgefuehrt werden (j/n)? "
+  read -e jn
+  if [ "$jn" == "j" ]; then
+    echo -e "AVRDUDE wird gestartet...\n"
+    $calldude
+    korrekt=0
+  fi
+  if [ "$jn" == "n" ]; then
+    korrekt=0
+  fi
+done

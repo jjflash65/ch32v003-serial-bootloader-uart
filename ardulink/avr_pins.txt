@@ -1,0 +1,107 @@
+###########################################################################################################################
+
+                                      AVR - 28 POL. ATMEGA CONTROLLER
+
+                                   Pinmapping Arduino - UNO r3 Board
+
+ The information in brackets are the pins of an unwired ATmegaxx8 IC in a 28 pol . package
+
+
+                                   DC in               USB
+                                                     +----+
+                                   +---+             |    |
+                               +---|   |-------------|    |--------+
+                               |   |   |             |    |        |
+                               |   +---+             +----+        |
+                               |                                   |
+                               |                         | Aref  o |
+                               |                         |  GND  o |
+                               |                         |   13  o |  PB5  SCK - PCINT5          (19)
+                               |                         |   12  o |  PB4  MISO - PCINT4         (18)
+                               | o  res  |             d |   11  o |  PB3  MOSI - OC2A - PCINT13 (17)
+                               | o  3.3V |             i |   10  o |  PB2  SS -  OC1B - PCINT2   (16)
+                               | o  5V   |             g |    9  o |  PB1  OC1A - PCINT1         (15)
+                               | o  GND  | a           i |    8  o |  PB0  PCINT0 - CLKO - ICP1  (14)
+                               | o  GND  | n           t |         |
+                               | o  Uin  | a           a |    7  o |  PD7  PCINT23 - AIN1        (13)
+                               |         | l           l |    6  o |  PD6  PCINT22 - OC0A - AIN0 (12)
+PC0  ADC0 - PCINT8        (23) | o  A0   | o             |    5  o |  PD5  PCINT21 - OC0B - T1   (11)
+PC1  ADC1 - PCINT9        (24) | o  A1   | g             |    4  o |  PD4  PCINT20 - XCK - T0    (6)
+PC2  ADC2 - PCINT10       (25) | o  A2   |               |    3  o |  PD3  PCINT19 - OC2B - INT1 (5)
+PC3  ADC3 - PCINT11       (26) | o  A3   |               |    2  o |  PD2  PCINT18 -INT0         (4)
+PC4  ADC4 - SDA - PCINT12 (27) | o  A4   |               | Tx 1  o |  PD1  TxD - PCINT16         (3)
+PC5  ADC5 - SCL - PCINT13 (28) | o  A5   |               | Rx 0  o |  PD0  RxD - PCINT14         (2)
+                               |                                   |
+                               +-----------------------------------+
+
+
+######################################################################################################################
+
+                        Pinmapping Arduino - Nano
+
+                                 +---+
+                          +------|   |-----+
+                          |      |   |     |
+                          |      +---+     |
+PB5  SCK - PCINT5         | o D13    D12 o |  PB4  MISO - PCINT4
+                          | o 3V3    D11 o |  PB3  MOSI - OC2A - PCINT13
+                          | o REF    D10 o |  PB2  SS -  OC1B - PCINT2
+PC0  ADC0 - PCINT8        | o A0      D9 o |  PB1  OC1A - PCINT1
+PC1  ADC1 - PCINT9        | o A1      D8 o |  PB0  PCINT0 - CLKO - ICP1
+PC2  ADC2 - PCINT10       | o A2      D7 o |  PD7  PCINT23 - AIN1
+PC3  ADC3 - PCINT11       | o A3      D6 o |  PD6  PCINT22 - OC0A - AIN0
+PC4  ADC4 - SDA - PCINT12 | o A4      D5 o |  PD5  PCINT21 - OC0B - T1
+PC5  ADC5 - SCL - PCINT13 | o A5      D4 o |  PD4  PCINT20 - XCK - T0
+     ADC6                 | o A6      D3 o |  PD3  PCINT19 - OC2B - INT1
+     ADC7                 | o A7      D2 o |  PD2  PCINT18 -INT0
+                          | o 5V     GND o |
+                          | o RST    RST o |
+                          | o GND   Rx 0 o |  PD0  RxD - PCINT14
+                          | o Vin   Tx 1 o |  PD1  TxD - PCINT16
+                          |                |
+                          +----------------+
+
+
+
+
+######################################################################################################################
+
+                                           ATMega xx8 28 pol.
+
+
+                                            +-------------+
+                        PCINT14/RESET) PC6  |  1       28 |  PC5 (ADC5/SCL/PCINT13) - Arduino A5
+     Arduino  0          (PCINT16/RXD) PD0  |  2       27 |  PC4 (ADC4/SDA/PCINT12) - Arduino A4
+     Arduino  1          (PCINT17/TXD) PD1  |  3   A   26 |  PC3 (ADC3/PCINT11)     - Arduino A3
+     Arduino  2         (PCINT18/INT0) PD2  |  4   T   25 |  PC2 (ADC2/PCINT10)     - Arduino A2
+     Arduino  3    (PCINT19/OC2B/INT1) PD3  |  5   M   24 |  PC1 (ADC1/PCINT9)      - Arduino A1
+     Arduino  4       (PCINT20/XCK/T0) PD4  |  6   e   23 |  PC0 (ADC0/PCINT8)      - Arduino A0
+                                       VCC  |  7   g   22 |  GND
+                                       GND  |  8   a   21 |  AREF
+                   PCINT6/XTAL1/TOSC1) PB6  |  9       20 |  AVCC
+                  (PCINT7/XTAL2/TOSC2) PB7  | 10   x   19 |  PB5 (SCK/PCINT5)       - Arduino 13
+     Arduino  5      (PCINT21/OC0B/T1) PD5  | 11   x   18 |  PB4 (MISO/PCINT4)      - Arduino 12
+     Arduino  6    (PCINT22/OC0A/AIN0) PD6  | 12   8   17 |  PB3 (MOSI/OC2A/PCINT3) - Arduino 11
+     Arduino  7  -      (PCINT23/AIN1) PD7  | 13       16 |  PB2 (SS/OC1B/PCINT2)   - Arduino 10
+     Arduino  8  -  (PCINT0/CLKO/ICP1) PB0  | 14       15 |  PB1 (OC1A/PCINT1)      - Arduino  9
+                                            +-------------+
+
+
+
+###########################################################################################################################
+
+                                              ATTINY2313
+
+                                            +-------------+
+                              /reset - PA2  |  1       20 |  Vcc
+                                 RxD - PD0  |  2       19 |  PB7 - UCSK - SCL - PCINT7
+                                 TxD - PD1  |  3   A   18 |  PB6 - MISO - DO - PCINT6
+                               XTAL2 - PA1  |  4   T   17 |  PB5 - MOSI - DI - SDA - PCINT5
+                               XTAL1 - PA0  |  5   t   16 |  PB4 - OC1B - PCINT4
+                    CKOUT - XCK - INT0 PD2  |  6   i   15 |  PB3 - OC1A - PCINT3
+                                INT1 - PD3  |  7   n   14 |  PB2 - OC0A - PCINT2
+                                  T0 - PD4  |  8   y   13 |  PB1 - AIN1 - PCINT1
+                           OC0B - T1 - PD5  |  9       12 |  PB0 - AIN0 - PCINT0
+                                       GND  | 10       11 |  PD6 - ICP
+                                            +-------------+
+
