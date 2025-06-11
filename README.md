@@ -28,7 +28,7 @@ aufbaut.
 Die zweite Seite beschäftigt sich mit V-USB und sehr faszinierend hier ist, dass dort auch
 ein Bootloader für eben V-USB zur Verfügung gestellt wird. Dieser Bootloader hat gegenüber
 diesem UART-Bootloader folgende Vorteile:
-<br>
+<br><br>
 <ul>
   <li>deutlich schnellerer Upload</li>
   <li>weniger benötigte Bauteile (2 Zenerdioden und 3 Widerstände, ggf. 3.3V Spannungsregler)
