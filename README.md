@@ -24,15 +24,7 @@ Windows gesehen.
 </ul>
 Ersterer stellt ein grundsätzliches Framework zur Verfügung auf der auch dieser Bootloader hier
 aufbaut.
-<br>
-Für ein grundsätzliches Arbeiten mit CH32V003, der Installation einer Toolchain und dem Aufbau
-eines DIY Programmers / Selbstbauprogrammers gibt es diese Seite (im Aufbau befindlich, aber 
-schon einiges enthalten):
 <br><br>
-<ul>
-  <a href="https://www.jjflash.de/ch32v003/index.html">https://www.jjflash.de/ch32v003/index.html</a>
-</ul>
-<br>
 Die zweite Seite beschäftigt sich mit V-USB und sehr faszinierend hier ist, dass dort auch
 ein Bootloader für eben V-USB zur Verfügung gestellt wird. Dieser Bootloader hat gegenüber
 diesem UART-Bootloader folgende Vorteile:
@@ -65,7 +57,15 @@ Makefile entsprechend zu setzen.
 <br><br>
 Um dieses bewerkstelligen zu können, muß aus einem Arduino ein Programmer gemacht werden und hierfür
 ist dann in diesem Repository auch die Firmware für einen Arduino / AVR gegeben.
+<br>
+Für ein grundsätzliches Arbeiten mit CH32V003, der Installation einer Toolchain und dem Aufbau
+eines DIY Programmers / Selbstbauprogrammers gibt es diese Seite (im Aufbau befindlich, aber 
+schon einiges enthalten):
 <br><br>
+<ul>
+  <a href="https://www.jjflash.de/ch32v003/index.html">https://www.jjflash.de/ch32v003/index.html</a>
+</ul>
+<br>
 Das dieser Text hier noch keine Dokumentation ist, ist dann auch das noch große (und sehr ungeliebte)
 ToDo für diese Seite.
 <br><br>
