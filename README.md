@@ -1,4 +1,4 @@
-![CH32V003 UART-Bootloader](https://github.com/jjflash65/ch32v003_uart_bootloader/blob/master/picture/ch32v003_nano_bootloader.gif)
+![CH32V003 UART-Bootloader](https://github.com/jjflash65/ch32v003_uart_bootloader/blob/main/picture/ch32v003_nano_bootloader.gif)
 <br><br>
 <table border="0" width="99%">
   <tbody>
@@ -19,9 +19,9 @@ serielle Bootloader nicht so wirklich brauchbar und ein Flasherprogramm hat er a
 Windows gesehen.
 <br><br> auf den Github-Seiten von Christian Lohr gibt es 2 wesentliche Seiten:
 <ul>
-  <li><a href="https://github.com/cnlohr/ch32fun">https://github.com/cnlohr/ch32fun<br></a><li>
+  <li><a href="https://github.com/cnlohr/ch32fun">https://github.com/cnlohr/ch32fun</a><li>
   <li><a href="https://github.com/cnlohr/rv003usb">https://github.com/cnlohr/rv003usb<br></a></li>
-<ul>
+</ul>
 Ersterer stellt ein grundsätzliches Framework zur Verfügung auf der auch dieser Bootloader hier
 aufbaut.
 <br>
