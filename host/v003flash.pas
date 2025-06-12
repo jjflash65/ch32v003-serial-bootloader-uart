@@ -482,7 +482,7 @@ begin
   writeln(' v003flash done, thank you');
 
   sleep(dtime_clear);
-  rtsdtr_pulse;
+//  rtsdtr_pulse;
 end;
 
 var
