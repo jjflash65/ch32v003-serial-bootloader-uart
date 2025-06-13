@@ -7,9 +7,9 @@
 PROJECT         = uart_bootload_page
 
 # hier alle zusaetzlichen Softwaremodule angegeben
-SRC             = ./src/uart.c
+SRC             = ../src/uart.c
 
-INC_DIR         = -I ./ -I ./include -I ./ch32fun/
+INC_DIR         = -I ./ -I ../include -I ../ch32fun/
 
 WRITE_SECTION   = bootloader
 
@@ -29,7 +29,9 @@ include ./Makefile.boot.mk
 ifeq ($(USE_ARDULINK),0)
 optionbytes :
 	minichlink -w +a55aff00 option # Enable bootloader, disable RESET
+	minichlink -w activate_boot.bin flash -b
 else ifeq ($(USE_ARDULINK),1)
 optionbytes :
 	minichlink -c $(progport) -C ardulink -w +a55aff00 option # Enable bootloader, disable RESET
+	minichlink -c $(progport) -C ardulink -w activate_boot.bin flash -b
 endif
