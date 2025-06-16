@@ -7,9 +7,9 @@
 PROJECT         = uart_bootload_page
 
 # hier alle zusaetzlichen Softwaremodule angegeben
-SRC             = ../src/uart.c
+SRC             = ./src/uart.c
 
-INC_DIR         = -I ./ -I ../include -I ../ch32fun/
+INC_DIR         = -I ./ -I ./include -I ./ch32fun/
 
 WRITE_SECTION   = bootloader
 
@@ -22,7 +22,7 @@ LINKER_SCRIPT   = ./ch32v003_uart_bootloader.ld
 #                       serielle Portangabe wird hier ignoriert
 
 PROGPORT      = /dev/ttyUSB0
-USE_ARDULINK  = 0
+USE_ARDULINK  = 1
 
 include ./Makefile.boot.mk
 
@@ -32,6 +32,6 @@ optionbytes :
 	minichlink -w activate_boot.bin flash -b
 else ifeq ($(USE_ARDULINK),1)
 optionbytes :
-	minichlink -c $(progport) -C ardulink -w +a55aff00 option # Enable bootloader, disable RESET
-	minichlink -c $(progport) -C ardulink -w activate_boot.bin flash -b
+	minichlink -c $(PROGPORT) -C ardulink -w +a55aff00 option # Enable bootloader, disable RESET
+	minichlink -c $(PROGPORT) -C ardulink -w activate_boot.bin flash -b
 endif
